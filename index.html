@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Thế Vỹ | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-start: #0f0f0f;
+            --bg-mid: #1a1a2e;
+            --bg-end: #16213e;
+            --accent: #00ffcc;
+            --accent2: #ff00cc;
+            --text: #e0e0e0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid var(--accent);
+        }
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 6px solid var(--accent);
+            box-shadow: 0 0 40px rgba(0, 255, 204, 0.6);
+            transition: transform 0.5s ease;
+        }
+        .avatar:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5em;
+            margin: 20px 0;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bio {
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--accent), #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        .badge {
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+            cursor: default;
+        }
+        .badge:hover {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--accent);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 255, 204, 0.3);
+            border-color: var(--accent2);
+        }
+        .project-card h3 {
+            margin: 0 0 10px;
+            color: var(--accent);
+            font-size: 1.5em;
+        }
+        .project-card .lang {
+            font-size: 0.9em;
+            color: #a0a0ff;
+            margin-bottom: 10px;
+        }
+        .project-card p {
+            margin: 10px 0;
+        }
+        .project-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .links {
+            text-align: center;
+        }
+        .links a {
+            display: inline-block;
+            margin: 15px;
+            padding: 14px 35px;
+            background: rgba(0, 255, 204, 0.15);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid var(--accent);
+            transition: all 0.4s ease;
+            font-weight: bold;
+        }
+        .links a:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
+            transform: scale(1.1);
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://avatars.githubusercontent.com/u/142806953?v=4" alt="Nguyễn Thế Vỹ" class="avatar">
+        <h1>Nguyễn Thế Vỹ</h1>
+        <p class="bio">Hi, I'm Nguyen The Vy. IoT · Embedded Systems · FPGA · Full-stack Developer.<br>
+        University of Science, VNU-HCM – Electronics & Telecommunications Engineering.<br>
+        Passionate about building real-world systems that run 24/7 in fish ponds, factories, and edge environments.</p>
+    </header>
+
+    <section id="skills">
+        <h2>Languages</h2>
+        <div class="badges">
+            <div class="badge" style="background:#00599C;">C</div>
+            <div class="badge" style="background:#00599C;">C++</div>
+            <div class="badge" style="background:#DEA584;">Rust</div>
+            <div class="badge" style="background:#3776AB;">Python</div>
+            <div class="badge" style="background:#3A3E9E;">Perl</div>
+            <div class="badge" style="background:#8B0000;">VHDL</div>
+            <div class="badge" style="background:#006400;">Verilog</div>
+            <div class="badge" style="background:#68217A;">C#</div>
+            <div class="badge" style="background:#F89820;">Java</div>
+            <div class="badge" style="background:#A97BFF;">Kotlin</div>
+        </div>
+
+        <h2>Microcontrollers & Single-Board Computers</h2>
+        <div class="badges">
+            <div class="badge" style="background:#00457C;">STM32</div>
+            <div class="badge" style="background:#000000;color:#00ffcc;">ESP32</div>
+            <div class="badge" style="background:#00A8E8;">ESP8266</div>
+            <div class="badge" style="background:#00D2B8;">Arduino</div>
+            <div class="badge" style="background:#FF7F00;">Orange Pi</div>
+            <div class="badge" style="background:#C51A4A;">Raspberry Pi</div>
+            <div class="badge" style="background:#78BE20;">Jetson Nano</div>
+        </div>
+
+        <h2>FPGA Development</h2>
+        <div class="badges">
+            <div class="badge" style="background:#0071C5;">DE10-NANO</div>
+            <div class="badge" style="background:#0071C5;">DE10-STANDARD</div>
+            <div class="badge" style="background:#0071C5;">DE10-LITE</div>
+            <div class="badge" style="background:#0071C5;">Quartus Prime</div>
+        </div>
+
+        <h2>Tools & Ecosystem</h2>
+        <div class="badges">
+            <div class="badge" style="background:#007ACC;">VSCode</div>
+            <div class="badge" style="background:#D44B2B;">RustRover</div>
+            <div class="badge" style="background:#F7B93E;">PlatformIO</div>
+            <div class="badge" style="background:#2496ED;">Docker</div>
+            <div class="badge" style="background:#F05032;">Git</div>
+            <div class="badge" style="background:#2C3E50;">MQTT</div>
+            <div class="badge" style="background:#FFB400;">Linux</div>
+        </div>
+
+        <h2>Currently Exploring</h2>
+        <div class="badges">
+            <div class="badge" style="background:#8A4BAF;">WebAssembly</div>
+            <div class="badge" style="background:#D95F02;">Zig</div>
+            <div class="badge" style="background:#E61E4C;">eBPF</div>
+            <div class="badge" style="background:#00C7B7;">Edge AI</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>All Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>DoAn_IoT</h3>
+                <div class="lang">Embedded C / BLE</div>
+                <p>Đồ án IoT: Hệ thống đo nhiệt độ, độ ẩm với EFR32xG21, BLE mesh, app config và indoor positioning.</p>
+                <a href="https://github.com/vynt2401/DoAn_IoT" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>DAQ_IOT</h3>
+                <div class="lang">Python / Armbian</div>
+                <p>Hệ thống thu thập dữ liệu IoT đa kênh trên Orange Pi, hỗ trợ MQTT, Flask dashboard realtime.</p>
+                <a href="https://github.com/vynt2401/DAQ_IOT" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>App_Configure</h3>
+                <div class="lang">Configuration Tool</div>
+                <p>Ứng dụng cấu hình chuyên dụng cho các dự án IoT và Embedded systems.</p>
+                <a href="https://github.com/vynt2401/App_Configure" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>tool_auto_update_code</h3>
+                <div class="lang">Python</div>
+                <p>Tool tự động update code – tiện ích automation giúp developer tiết kiệm thời gian.</p>
+                <a href="https://github.com/vynt2401/tool_auto_update_code" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>baiTapLon_THPPT</h3>
+                <div class="lang">MATLAB</div>
+                <p>Bài tập lớn Tin học ứng dụng - Xử lý tín hiệu và phân tích dữ liệu với MATLAB.</p>
+                <a href="https://github.com/vynt2401/baiTapLon_THPPT" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>DSP</h3>
+                <div class="lang">MATLAB</div>
+                <p>Dự án Digital Signal Processing – Các thuật toán xử lý tín hiệu số.</p>
+                <a href="https://github.com/vynt2401/DSP" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>STM32f405RGT6_Open405r-c_Project</h3>
+                <div class="lang">C</div>
+                <p>Project Embedded trên STM32F405RGT6 với board Open405R-C – Bare-metal programming.</p>
+                <a href="https://github.com/vynt2401/STM32f405RGT6_Open405r-c_Project" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>coffeManager-C-</h3>
+                <div class="lang">C#</div>
+                <p>Ứng dụng quản lý quán cà phê – Coffee Manager viết bằng C#.</p>
+                <a href="https://github.com/vynt2401/coffeManager-C-" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>vynt2401 (Profile)</h3>
+                <div class="lang">README</div>
+                <p>Config và README cho GitHub profile cá nhân.</p>
+                <a href="https://github.com/vynt2401/vynt2401" target="_blank">View on GitHub →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact & Links</h2>
+        <div class="links">
+            <a href="https://github.com/vynt2401" target="_blank">GitHub Profile</a>
+            <a href="https://www.linkedin.com/in/v%E1%BB%B9-nguy%E1%BB%85n-ba4157299/" target="_blank">LinkedIn</a>
+            <a href="mailto:nvy381932@gmail.com">Email Me</a>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Nguyễn Thế Vỹ • Built with ❤️ and GitHub Pages
+    </footer>
+
+    <script>
+        // Fade-in animation khi scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(sec => observer.observe(sec));
+    </script>
+</body>
+</html>
