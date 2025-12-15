@@ -4,159 +4,243 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nguyễn Thế Vỹ | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-start: #0f0f0f;
-            --bg-mid: #1a1a2e;
-            --bg-end: #16213e;
-            --accent: #00ffcc;
-            --accent2: #ff00cc;
+            --bg-gradient: linear-gradient(135deg, #0f0f1a, #1a1a2e, #16213e);
             --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent: #00ffcc;
+            --card-bg: rgba(20, 20, 40, 0.8);
+            --shadow: 0 10px 30px rgba(0, 255, 204, 0.2);
         }
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
             color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
         header {
             text-align: center;
-            padding: 80px 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-bottom: 2px solid var(--accent);
+            padding: 120px 20px 80px;
         }
         .avatar {
-            width: 200px;
-            height: 200px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            border: 6px solid var(--accent);
-            box-shadow: 0 0 40px rgba(0, 255, 204, 0.6);
-            transition: transform 0.5s ease;
-        }
-        .avatar:hover {
-            transform: scale(1.1) rotate(5deg);
+            border: 4px solid var(--accent);
+            margin-bottom: 30px;
         }
         h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5em;
-            margin: 20px 0;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            margin: 0 0 20px;
+            font-weight: 700;
+        }
+        .title {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 20px;
         }
         .bio {
-            font-size: 1.3em;
             max-width: 800px;
             margin: 0 auto;
-            opacity: 0.9;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
         }
         section {
-            max-width: 1200px;
-            margin: 60px auto;
+            max-width: 1300px;
+            margin: 80px auto;
             padding: 0 20px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         h2 {
-            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
             text-align: center;
-            font-size: 2.2em;
-            margin-bottom: 40px;
-            background: linear-gradient(90deg, var(--accent), #00aaff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 60px;
+            font-weight: 600;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .skill-category {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            transition: all 0.4s ease;
+        }
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        .skill-category h3 {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: var(--accent);
         }
         .badges {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 50px;
+            gap: 12px;
         }
         .badge {
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            transition: all 0.4s ease;
-            cursor: default;
-        }
-        .badge:hover {
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-        }
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        .project-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--accent);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-        .project-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 255, 204, 0.3);
-            border-color: var(--accent2);
-        }
-        .project-card h3 {
-            margin: 0 0 10px;
-            color: var(--accent);
-            font-size: 1.5em;
-        }
-        .project-card .lang {
-            font-size: 0.9em;
-            color: #a0a0ff;
-            margin-bottom: 10px;
-        }
-        .project-card p {
-            margin: 10px 0;
-        }
-        .project-card a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .links {
-            text-align: center;
-        }
-        .links a {
-            display: inline-block;
-            margin: 15px;
-            padding: 14px 35px;
             background: rgba(0, 255, 204, 0.15);
             color: var(--accent);
-            text-decoration: none;
-            border-radius: 50px;
-            border: 2px solid var(--accent);
-            transition: all 0.4s ease;
-            font-weight: bold;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 1rem;
+            border: 1px solid var(--accent);
+            transition: all 0.3s ease;
         }
-        .links a:hover {
+        .badge:hover {
             background: var(--accent);
             color: #000;
-            box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
             transform: scale(1.1);
+        }
+
+        /* Carousel Projects */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            gap: 40px;
+        }
+        .project-card {
+            min-width: 380px;
+            max-width: 380px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transform: rotate(2deg);
+            transition: all 0.5s ease;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            flex-shrink: 0;
+        }
+        .project-card:nth-child(even) {
+            transform: rotate(-2deg);
+        }
+        .project-card:hover {
+            transform: translateY(-20px) rotate(0deg) !important;
+            box-shadow: 0 30px 60px rgba(0, 255, 204, 0.4);
+        }
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .project-content {
+            padding: 25px;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .project-tags span {
+            background: rgba(0, 255, 204, 0.2);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .project-card h3 {
+            font-size: 1.6rem;
+            margin: 0 0 10px;
+            color: var(--accent);
+        }
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        .project-year {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Carousel buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--accent);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        .carousel-btn:hover {
+            background: var(--accent);
+            color: #000;
+        }
+        .prev-btn {
+            left: 20px;
+        }
+        .next-btn {
+            right: 20px;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 30px;
+            background: rgba(0, 255, 204, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .contact-links a:hover {
+            background: var(--accent);
+            color: #000;
         }
         footer {
             text-align: center;
-            padding: 40px;
-            font-size: 0.9em;
-            color: #666;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-card {
+                min-width: 300px;
+                max-width: 300px;
+            }
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
@@ -164,139 +248,119 @@
     <header>
         <img src="https://avatars.githubusercontent.com/u/142806953?v=4" alt="Nguyễn Thế Vỹ" class="avatar">
         <h1>Nguyễn Thế Vỹ</h1>
-        <p class="bio">Hi, I'm Nguyen The Vy. IoT · Embedded Systems · FPGA · Full-stack Developer.<br>
-        University of Science, VNU-HCM – Electronics & Telecommunications Engineering.<br>
-        Passionate about building real-world systems that run 24/7 in fish ponds, factories, and edge environments.</p>
+        <p class="title">Embedded • IoT • FPGA Developer</p>
+        <p class="bio">Building reliable real-world systems for industrial, agricultural, and edge environments.<br>Electronics & Telecommunications Engineering – University of Science, VNU-HCM.</p>
     </header>
 
     <section id="skills">
-        <h2>Languages</h2>
-        <div class="badges">
-            <div class="badge" style="background:#00599C;">C</div>
-            <div class="badge" style="background:#00599C;">C++</div>
-            <div class="badge" style="background:#DEA584;">Rust</div>
-            <div class="badge" style="background:#3776AB;">Python</div>
-            <div class="badge" style="background:#3A3E9E;">Perl</div>
-            <div class="badge" style="background:#8B0000;">VHDL</div>
-            <div class="badge" style="background:#006400;">Verilog</div>
-            <div class="badge" style="background:#68217A;">C#</div>
-            <div class="badge" style="background:#F89820;">Java</div>
-            <div class="badge" style="background:#A97BFF;">Kotlin</div>
-        </div>
-
-        <h2>Microcontrollers & Single-Board Computers</h2>
-        <div class="badges">
-            <div class="badge" style="background:#00457C;">STM32</div>
-            <div class="badge" style="background:#000000;color:#00ffcc;">ESP32</div>
-            <div class="badge" style="background:#00A8E8;">ESP8266</div>
-            <div class="badge" style="background:#00D2B8;">Arduino</div>
-            <div class="badge" style="background:#FF7F00;">Orange Pi</div>
-            <div class="badge" style="background:#C51A4A;">Raspberry Pi</div>
-            <div class="badge" style="background:#78BE20;">Jetson Nano</div>
-        </div>
-
-        <h2>FPGA Development</h2>
-        <div class="badges">
-            <div class="badge" style="background:#0071C5;">DE10-NANO</div>
-            <div class="badge" style="background:#0071C5;">DE10-STANDARD</div>
-            <div class="badge" style="background:#0071C5;">DE10-LITE</div>
-            <div class="badge" style="background:#0071C5;">Quartus Prime</div>
-        </div>
-
-        <h2>Tools & Ecosystem</h2>
-        <div class="badges">
-            <div class="badge" style="background:#007ACC;">VSCode</div>
-            <div class="badge" style="background:#D44B2B;">RustRover</div>
-            <div class="badge" style="background:#F7B93E;">PlatformIO</div>
-            <div class="badge" style="background:#2496ED;">Docker</div>
-            <div class="badge" style="background:#F05032;">Git</div>
-            <div class="badge" style="background:#2C3E50;">MQTT</div>
-            <div class="badge" style="background:#FFB400;">Linux</div>
-        </div>
-
-        <h2>Currently Exploring</h2>
-        <div class="badges">
-            <div class="badge" style="background:#8A4BAF;">WebAssembly</div>
-            <div class="badge" style="background:#D95F02;">Zig</div>
-            <div class="badge" style="background:#E61E4C;">eBPF</div>
-            <div class="badge" style="background:#00C7B7;">Edge AI</div>
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="badges">
+                    <div class="badge">C</div><div class="badge">C++</div><div class="badge">Rust</div><div class="badge">Python</div>
+                    <div class="badge">VHDL</div><div class="badge">Verilog</div><div class="badge">Perl</div><div class="badge">C#</div>
+                    <div class="badge">Java</div><div class="badge">Kotlin</div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Hardware & Platforms</h3>
+                <div class="badges">
+                    <div class="badge">STM32</div><div class="badge">ESP32</div><div class="badge">ESP8266</div><div class="badge">Arduino</div>
+                    <div class="badge">Orange Pi</div><div class="badge">Raspberry Pi</div><div class="badge">Jetson Nano</div>
+                    <div class="badge">DE10 Series</div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Tools & Ecosystem</h3>
+                <div class="badges">
+                    <div class="badge">PlatformIO</div><div class="badge">VSCode</div><div class="badge">Quartus Prime</div>
+                    <div class="badge">Docker</div><div class="badge">Git</div><div class="badge">MQTT</div><div class="badge">Linux</div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Exploring</h3>
+                <div class="badges">
+                    <div class="badge">WebAssembly</div><div class="badge">Zig</div><div class="badge">eBPF</div><div class="badge">Edge AI</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="projects">
-        <h2>All Projects</h2>
-        <div class="projects">
-            <div class="project-card">
-                <h3>DoAn_IoT</h3>
-                <div class="lang">Embedded C / BLE</div>
-                <p>Đồ án IoT: Hệ thống đo nhiệt độ, độ ẩm với EFR32xG21, BLE mesh, app config và indoor positioning.</p>
-                <a href="https://github.com/vynt2401/DoAn_IoT" target="_blank">View on GitHub →</a>
-            </div>
+        <h2>Projects</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn" aria-label="Previous">‹</button>
+            <div class="carousel" id="projectCarousel">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="image1.png" alt="DoAn_IoT" class="project-img">
+                    <!-- Nếu bạn có ảnh thật, upload lên repo rồi thay link nhé! Hiện dùng placeholder -->
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span>EFR32</span><span>BLE Mesh</span><span>I2C</span><span>Embedded C</span>
+                        </div>
+                        <h3>DoAn_IoT</h3>
+                        <p>Hệ thống IoT đo nhiệt độ/độ ẩm với BLE mesh, indoor positioning và app cấu hình PC.</p>
+                        <p class="project-year">2025</p>
+                        <a href="https://github.com/vynt2401/DoAn_IoT" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <h3>DAQ_IOT</h3>
-                <div class="lang">Python / Armbian</div>
-                <p>Hệ thống thu thập dữ liệu IoT đa kênh trên Orange Pi, hỗ trợ MQTT, Flask dashboard realtime.</p>
-                <a href="https://github.com/vynt2401/DAQ_IOT" target="_blank">View on GitHub →</a>
-            </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="DAQ Dashboard" class="project-img">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span>Orange Pi</span><span>MQTT</span><span>Flask</span><span>React</span>
+                        </div>
+                        <h3>DAQ_IOT</h3>
+                        <p>Thu thập dữ liệu đa kênh realtime với dashboard web trên Orange Pi.</p>
+                        <p class="project-year">2025</p>
+                        <a href="https://github.com/vynt2401/DAQ_IOT" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <h3>App_Configure</h3>
-                <div class="lang">Configuration Tool</div>
-                <p>Ứng dụng cấu hình chuyên dụng cho các dự án IoT và Embedded systems.</p>
-                <a href="https://github.com/vynt2401/App_Configure" target="_blank">View on GitHub →</a>
-            </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="https://hackaday.io/files/169/169726/stm32f4discovery.jpg" alt="Ảnh" class="project-img">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span>STM32F405</span><span>Bare-metal</span><span>C</span>
+                        </div>
+                        <h3>STM32f405RGT6 Project</h3>
+                        <p>Bare-metal embedded programming trên board Open405R-C.</p>
+                        <p class="project-year">2024</p>
+                        <a href="https://github.com/vynt2401/STM32f405RGT6_Open405r-c_Project" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <h3>tool_auto_update_code</h3>
-                <div class="lang">Python</div>
-                <p>Tool tự động update code – tiện ích automation giúp developer tiết kiệm thời gian.</p>
-                <a href="https://github.com/vynt2401/tool_auto_update_code" target="_blank">View on GitHub →</a>
-            </div>
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <img src="https://www.terasic.com.tw/gallery/english/DE10-Nano_01.jpg" alt="FPGA Project" class="project-img">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span>FPGA</span><span>Quartus Prime</span><span>VHDL/Verilog</span>
+                        </div>
+                        <h3>FPGA Projects</h3>
+                        <p>Các dự án trên DE10-Nano/Standard/Lite.</p>
+                        <p class="project-year">2024</p>
+                        <a href="https://github.com/vynt2401" class="project-link" target="_blank">Explore on GitHub →</a>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <h3>baiTapLon_THPPT</h3>
-                <div class="lang">MATLAB</div>
-                <p>Bài tập lớn Tin học ứng dụng - Xử lý tín hiệu và phân tích dữ liệu với MATLAB.</p>
-                <a href="https://github.com/vynt2401/baiTapLon_THPPT" target="_blank">View on GitHub →</a>
+                <!-- Thêm project khác nếu muốn -->
             </div>
-
-            <div class="project-card">
-                <h3>DSP</h3>
-                <div class="lang">MATLAB</div>
-                <p>Dự án Digital Signal Processing – Các thuật toán xử lý tín hiệu số.</p>
-                <a href="https://github.com/vynt2401/DSP" target="_blank">View on GitHub →</a>
-            </div>
-
-            <div class="project-card">
-                <h3>STM32f405RGT6_Open405r-c_Project</h3>
-                <div class="lang">C</div>
-                <p>Project Embedded trên STM32F405RGT6 với board Open405R-C – Bare-metal programming.</p>
-                <a href="https://github.com/vynt2401/STM32f405RGT6_Open405r-c_Project" target="_blank">View on GitHub →</a>
-            </div>
-
-            <div class="project-card">
-                <h3>coffeManager-C-</h3>
-                <div class="lang">C#</div>
-                <p>Ứng dụng quản lý quán cà phê – Coffee Manager viết bằng C#.</p>
-                <a href="https://github.com/vynt2401/coffeManager-C-" target="_blank">View on GitHub →</a>
-            </div>
-
-            <div class="project-card">
-                <h3>vynt2401 (Profile)</h3>
-                <div class="lang">README</div>
-                <p>Config và README cho GitHub profile cá nhân.</p>
-                <a href="https://github.com/vynt2401/vynt2401" target="_blank">View on GitHub →</a>
-            </div>
+            <button class="carousel-btn next-btn" aria-label="Next">›</button>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact & Links</h2>
-        <div class="links">
-            <a href="https://github.com/vynt2401" target="_blank">GitHub Profile</a>
+    <section id="contact" style="text-align:center;">
+        <h2>Contact</h2>
+        <div class="contact-links">
+            <a href="https://github.com/vynt2401" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/v%E1%BB%B9-nguy%E1%BB%85n-ba4157299/" target="_blank">LinkedIn</a>
-            <a href="mailto:nvy381932@gmail.com">Email Me</a>
+            <a href="mailto:nvy381932@gmail.com">Email</a>
         </div>
     </section>
 
@@ -305,17 +369,35 @@
     </footer>
 
     <script>
-        // Fade-in animation khi scroll
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+        // Simple Carousel JS
+        const carousel = document.getElementById('projectCarousel');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let index = 0;
 
-        sections.forEach(sec => observer.observe(sec));
+        function updateCarousel() {
+            const cardWidth = document.querySelector('.project-card').offsetWidth + 40; // width + gap
+            carousel.style.transform = `translateX(-${index * cardWidth}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const maxIndex = carousel.children.length - Math.floor(carousel.parentElement.offsetWidth / (carousel.children[0].offsetWidth + 40));
+            if (index < maxIndex) {
+                index++;
+                updateCarousel();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (index > 0) {
+                index--;
+                updateCarousel();
+            }
+        });
+
+        // Responsive update on resize
+        window.addEventListener('resize', updateCarousel);
+        updateCarousel(); // Initial position
     </script>
 </body>
 </html>
